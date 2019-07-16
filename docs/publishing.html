@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11.2 Components | R Markdown: The Definitive Guide</title>
+  <title>Chapter 13 Publishing | R Markdown: The Definitive Guide</title>
   <meta name="description" content="The first official book authored by the core R Markdown developers that provides a comprehensive and accurate reference to the R Markdown ecosystem. With R Markdown, you can easily create reproducible data analysis reports, presentations, dashboards, interactive applications, books, dissertations, websites, and journal articles, while enjoying the simplicity of Markdown and the great power of R and other languages." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11.2 Components | R Markdown: The Definitive Guide" />
+  <meta property="og:title" content="Chapter 13 Publishing | R Markdown: The Definitive Guide" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown/" />
   <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown/images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/rmarkdown-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.2 Components | R Markdown: The Definitive Guide" />
+  <meta name="twitter:title" content="Chapter 13 Publishing | R Markdown: The Definitive Guide" />
   
   <meta name="twitter:description" content="The first official book authored by the core R Markdown developers that provides a comprehensive and accurate reference to the R Markdown ecosystem. With R Markdown, you can easily create reproducible data analysis reports, presentations, dashboards, interactive applications, books, dissertations, websites, and journal articles, while enjoying the simplicity of Markdown and the great power of R and other languages." />
   <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown/images/cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="pkgdown-start.html">
-<link rel="next" href="books.html">
+<link rel="prev" href="bookdown-publish.html">
+<link rel="next" href="rstudio-connect-1.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -517,60 +517,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pkgdown-components" class="section level2">
-<h2><span class="header-section-number">11.2</span> Components</h2>
-<p>A <strong>pkgdown</strong> website consists of these components: the home page, function reference, articles, news, and the navigation bar. You may configure these components via a file <code>_pkgdown.yml</code>.</p>
-<div id="home-page" class="section level3">
-<h3><span class="header-section-number">11.2.1</span> Home page</h3>
-<p>The home page is generated from the first existing file of the following files in your source package:</p>
-<ul>
-<li><code>index.Rmd</code></li>
-<li><code>README.Rmd</code></li>
-<li><code>index.md</code></li>
-<li><code>README.md</code></li>
-</ul>
-<p>Other meta information about the package, such as the package license and author names, will be displayed automatically as a sidebar on the home page.</p>
+<div id="publishing" class="section level1">
+<h1><span class="header-section-number">Chapter 13</span> Publishing</h1>
+<p>As you develop the book, you make the draft book available to the public to get early feedback from readers, e.g., publish it to a website. After you finish writing the book, you need to think about options to formally publish it as either printed copies or e-books.</p> 
 </div>
-<div id="function-reference" class="section level3">
-<h3><span class="header-section-number">11.2.2</span> Function reference</h3>
-<p>The reference pages look like R’s own help pages. In fact, these pages are generated from the <code>*.Rd</code> files under <code>man/</code>. Compared to R’s own help pages, <strong>pkgdown</strong> offers a few more benefits: the examples on a help page (if they exist) will be evaluated so that you can see the output, and function names are automatically linked so you can click on a name to navigate to the help page of another function. What is more, <strong>pkgdown</strong> allows you to organize the list of all functions into groups (e.g., by topic), which can make it easier for users to find the right function in a list. By default, all functions are listed alphabetically just like R’s help system. To group functions on the list page, you need to provide a <code>reference</code> key in <code>_pkgdown.yml</code>, e.g.,</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb265-1" title="1"><span class="fu">reference:</span></a>
-<a class="sourceLine" id="cb265-2" title="2">  <span class="kw">-</span> <span class="fu">title:</span><span class="at"> </span><span class="st">&quot;One Topic&quot;</span></a>
-<a class="sourceLine" id="cb265-3" title="3">    <span class="fu">desc:</span><span class="at"> </span><span class="st">&quot;These functions are awesome...&quot;</span></a>
-<a class="sourceLine" id="cb265-4" title="4">    <span class="fu">contents:</span></a>
-<a class="sourceLine" id="cb265-5" title="5">      <span class="kw">-</span> awesome_a</a>
-<a class="sourceLine" id="cb265-6" title="6">      <span class="kw">-</span> awesome_b</a>
-<a class="sourceLine" id="cb265-7" title="7">      <span class="kw">-</span> cool_c</a>
-<a class="sourceLine" id="cb265-8" title="8">  <span class="kw">-</span> <span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Another Topic&quot;</span></a>
-<a class="sourceLine" id="cb265-9" title="9">    <span class="fu">desc:</span><span class="at"> </span><span class="st">&quot;These functions are boring...&quot;</span></a>
-<a class="sourceLine" id="cb265-10" title="10">    <span class="fu">contents:</span></a>
-<a class="sourceLine" id="cb265-11" title="11">      <span class="kw">-</span> starts_with(<span class="st">&quot;boring_&quot;</span>)</a>
-<a class="sourceLine" id="cb265-12" title="12">      <span class="kw">-</span> ugh_oh</a></code></pre></div>
-<p>As you can see from the above example, you may list the names of functions in the <code>contents</code> field, or provide a pattern to let <strong>pkgdown</strong> match the names. There are three ways to match function names: <code>starts_with()</code> to match names that start with a string, <code>ends_width()</code> for an ending pattern, and <code>matches()</code> for an arbitrary regular expression.</p>
-</div>
-<div id="articles" class="section level3">
-<h3><span class="header-section-number">11.2.3</span> Articles</h3>
-<p>Package vignettes in the R Markdown format under the <code>vignettes/</code> directories will be built as “articles” for a <strong>pkgdown</strong>-based website. Note that Rmd files under subdirectories will also be built. The list of articles will be displayed as a drop-down menu in the navigation bar.</p>
-<p>If you have a vignette that has the same base name as the package name (e.g., a vignette <code>foo.Rmd</code> in a package <strong>foo</strong>), it will be displayed as the “Get started” menu item in the navigation bar.</p>
-</div>
-<div id="news" class="section level3">
-<h3><span class="header-section-number">11.2.4</span> News</h3>
-<p>If the source package has a news file <code>NEWS.md</code>, it will be parsed and rendered to HTML pages that can be accessed via the “Changelog” menu in the navigation bar.</p>
-</div>
-<div id="navigation-bar-1" class="section level3">
-<h3><span class="header-section-number">11.2.5</span> Navigation bar</h3>
-<p>The navigation bar in <strong>pkgdown</strong> is based on the <strong>rmarkdown</strong> site generator. You can learn how to customize it from Section <a href="rmarkdown-site.html#site-navigation">10.5.4</a>, if you are not satisfied by the default navigation bar. Please note that you need to specify the <code>navbar</code> field in <code>_pkgdown.yml</code> instead of <code>_site.yml</code>.</p>
-
-</div>
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="pkgdown-start.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="books.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="bookdown-publish.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rstudio-connect-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -600,7 +557,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/rmarkdown-book/edit/master/11-pkgdown.Rmd",
+"link": "https://github.com/rstudio/rmarkdown-book/edit/master/12-bookdown.Rmd",
 "text": "Edit"
 },
 "history": {
